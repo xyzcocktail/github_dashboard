@@ -13,6 +13,15 @@ const pullRequestsQuery = gql`
             headRef { name } # Branch
             baseRefName
             mergeable
+            reviewRequests(first:7) { # Tagged reviewers
+              nodes {
+                requestedReviewer {
+                  ... on User {
+                    name
+                  }
+                }
+              }
+            }
             reviews(first:10){
               nodes { 
                 author { login }

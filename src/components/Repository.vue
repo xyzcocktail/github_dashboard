@@ -36,7 +36,7 @@ export default {
     this.setPullRequests(this.organization, this.repository)
     setInterval(() => {
       this.setPullRequests(this.organization, this.repository)
-    }, 30000)
+    }, 60000)
   },
   watch: {
     repository(repository) {
@@ -73,15 +73,10 @@ export default {
       })
     },
     taggedPullRequests() {
-      // Unfortunately, it looks like the Github GraphQL API doesn't list tagged reviewers, so this is a workaround
       return this.pullRequests.filter(pr => {
-        // Get all PRs that I've left an 'APPROVAL' on
-        const iHaveApproved = pr.reviews.nodes.find(review => {
-          return review.author.login === GITHUB_USERNAME && review.state === 'APPROVED'
-        }) ? true : false
-        
-        // If the PR has not been approved by me and the PR is not mine, then assume I'm tagged
-        return !iHaveApproved && pr.author.login !== GITHUB_USERNAME
+        return pr.reviewRequests.nodes.find(request => {
+          return request.requestedReviewer.name === GITHUB_USERNAME
+        })
       })
     },
     approvedPullRequests() {
