@@ -49,6 +49,9 @@ export default {
           <th class="text-left" width="200">
             Merge Conflicts
           </th>
+          <th class="text-left" width="200">
+            Latest Build
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -60,7 +63,7 @@ export default {
           <td>{{ item.author.login }}</td>
           <td>{{ getUnaddressedComments(item) }}</td>
           <td>{{ item.mergeable }}</td>
-
+          <td>{{ item.commits.nodes[0].commit.status.state }}</td>
         </tr>
       </tbody>
     </template>

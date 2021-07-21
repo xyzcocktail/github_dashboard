@@ -16,7 +16,7 @@ const pullRequestsQuery = gql`
             reviews(first:10){
               nodes { 
                 author { login }
-                state # If the PR has been ticked
+                state # If the PR has been approved
               }
             }
             reviewThreads(first:100) {
@@ -30,6 +30,15 @@ const pullRequestsQuery = gql`
                 }
               }
             }
+            commits(last:1) { # Whether the latest built passed or failed
+              nodes {
+                commit {
+                  status {
+                    state
+                  }
+                }
+              }
+            }            
           }
         }
       }
