@@ -11,7 +11,7 @@ const pullRequestsQuery = gql`
             url
             author { login } # Pull Request Author
             headRef { name } # Branch
-            baseRefName
+            baseRefName # What branch it will merge into 
             mergeable
             reviewRequests(first:7) { # Tagged reviewers
               nodes {
@@ -23,7 +23,7 @@ const pullRequestsQuery = gql`
                 }
               }
             }
-            reviews(first:10){
+            reviews(first:10){ # Reviews (approved, commented, requested changes)
               nodes { 
                 author { login }
                 state # If the PR has been approved

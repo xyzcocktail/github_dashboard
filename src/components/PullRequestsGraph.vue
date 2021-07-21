@@ -47,7 +47,6 @@ export default {
         tooltip: {
           trigger: "item",
           triggerOn: 'mouseover',
-          // formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
         series: [
           {

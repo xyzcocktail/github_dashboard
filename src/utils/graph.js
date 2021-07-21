@@ -34,7 +34,6 @@ export class Graph {
   _asTree(currentNodeName, state, visited) {
     if(!visited.has(currentNodeName)) {
       let currentVisited = new Node(currentNodeName)
-      // currentNode.setLinks(this.getNode(currentNodeName).getLinks())
 
       state.push(currentVisited)
       visited.add(currentNodeName)

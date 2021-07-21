@@ -89,13 +89,12 @@ export default {
     },
     graphNodes() {
       const graph = new Graph()
+
       this.pullRequests.forEach(pr => {        
         graph.addLink(pr.headRef.name, pr.baseRefName)
       })
       
-      const tree = graph.asTree(this.baseBranch)
-      
-      return tree
+      return graph.asTree(this.baseBranch)
     }
   }
 }
