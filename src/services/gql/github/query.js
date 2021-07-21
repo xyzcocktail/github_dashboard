@@ -18,6 +18,7 @@ const pullRequestsQuery = gql`
                 requestedReviewer {
                   ... on User {
                     name
+                    login
                   }
                 }
               }

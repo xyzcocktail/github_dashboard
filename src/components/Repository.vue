@@ -75,7 +75,7 @@ export default {
     taggedPullRequests() {
       return this.pullRequests.filter(pr => {
         return pr.reviewRequests.nodes.find(request => {
-          return request.requestedReviewer.name === GITHUB_USERNAME
+          return request.requestedReviewer.login === GITHUB_USERNAME
         })
       })
     },
