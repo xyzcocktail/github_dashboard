@@ -36,7 +36,7 @@ export default {
     this.setPullRequests(this.organization, this.repository)
     setInterval(() => {
       this.setPullRequests(this.organization, this.repository)
-    }, 60000)
+    }, GITHUB_POLLING_FREQUENCY)
   },
   watch: {
     repository(repository) {

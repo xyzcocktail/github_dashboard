@@ -5,6 +5,11 @@ const pullRequestsQuery = gql`
   query($organization: String!, $repository: String!) {
     organization(login: $organization) {
       repository(name: $repository) {
+        # refs(refPrefix: "refs/heads/", first: 30) {
+        #   nodes {
+        #     name
+        #   }
+        # }
         pullRequests(first:100, states:OPEN) {
           nodes {
             title
